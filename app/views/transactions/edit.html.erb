@@ -1,0 +1,72 @@
+<!-- Validation failure messages -->
+<% if @transaction.errors.any? %>
+  <% @transaction.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Transaction #<%= @transaction.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_transaction/<%= @transaction.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @transaction.user_id %>">
+      </div>
+
+      <!-- Label and input for amount -->
+      <div class="form-group">
+        <label for="amount" class="control-label">
+          Amount
+        </label>
+
+        <input type="text" id="amount" name="amount" placeholder="Amount" class="form-control" value="<%= @transaction.amount %>">
+      </div>
+
+      <!-- Label and input for lottery_elligible -->
+      <div class="checkbox">
+        <label for="lottery_elligible">
+          <input type="checkbox" id="lottery_elligible" name="lottery_elligible" value="1" <%= "checked" if @transaction.lottery_elligible %>>
+          Lottery elligible
+        </label>
+      </div>
+
+      <!-- Label and input for date -->
+      <div class="form-group">
+        <label for="date" class="control-label">
+          Date
+        </label>
+
+        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @transaction.date %>">
+      </div>
+
+      <!-- Label and input for lottery_id -->
+      <div class="form-group">
+        <label for="lottery_id" class="control-label">
+          Lottery
+        </label>
+
+        <input type="text" id="lottery_id" name="lottery_id" placeholder="Lottery" class="form-control" value="<%= @transaction.lottery_id %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Transaction
+      </button>
+      or
+      <a href="/transactions/<%= @transaction.id %>">Cancel</a>
+    </form>
+  </div>
+</div>
