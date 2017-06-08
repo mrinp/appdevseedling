@@ -11,12 +11,6 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception
 
-  # def index
-  #   <% if @current_user != nil %>
-  #     render("/seedling.html.erb")
-  #     <% else %>
-  #     before_action :authenticate_user!
-  #     <% end %>
-  #   end
+
 
 end
