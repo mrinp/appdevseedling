@@ -30,9 +30,11 @@
       </div>
 
       <!-- Label and input for lottery_elligible -->
+
+
       <div class="checkbox">
         <label for="lottery_elligible">
-          <input type="checkbox" id="lottery_elligible" name="lottery_elligible" value="1" <%= "checked" if @transaction.lottery_elligible %>>
+          <input type="hidden" id="lottery_elligible" name="lottery_elligible" value="1" <%= "checked" if @transaction.lottery_elligible %>>
           Lottery elligible
         </label>
       </div>
