@@ -1,4 +1,21 @@
 Rails.application.routes.draw do
+  # Routes for the Lottery resource:
+  # CREATE
+  get "/lotteries/new", :controller => "lotteries", :action => "new"
+  post "/create_lottery", :controller => "lotteries", :action => "create"
+
+  # READ
+  get "/lotteries", :controller => "lotteries", :action => "index"
+  get "/lotteries/:id", :controller => "lotteries", :action => "show"
+
+  # UPDATE
+  get "/lotteries/:id/edit", :controller => "lotteries", :action => "edit"
+  post "/update_lottery/:id", :controller => "lotteries", :action => "update"
+
+  # DELETE
+  get "/delete_lottery/:id", :controller => "lotteries", :action => "destroy"
+  #------------------------------
+
   # Routes for the Transaction resource:
   # CREATE
   get "/transactions/new", :controller => "transactions", :action => "new"

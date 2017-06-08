@@ -10,7 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170608035150) do
+ActiveRecord::Schema.define(version: 20170608055305) do
+
+  create_table "lotteries", force: :cascade do |t|
+    t.integer  "transactions_id"
+    t.integer  "user_id"
+    t.integer  "amount"
+    t.integer  "raffle_number"
+    t.date     "date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "amount"
+    t.boolean  "lottery_elligible"
+    t.date     "date"
+    t.integer  "lottery_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

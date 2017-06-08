@@ -4,8 +4,28 @@
   <%= devise_error_messages! %>
 
   <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, :class => "form-control", autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, :class => "form-control", autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, :class => "form-control", autofocus: true %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, :class => "form-control", autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :ssn %><br />
+    <%= f.number_field :ssn, :class => "form-control", autofocus: true %>
   </div>
 
   <div class="field">

@@ -1,0 +1,73 @@
+<!-- Validation failure messages -->
+<% if @lottery.errors.any? %>
+  <% @lottery.errors.full_messages.each do |message| %>
+    <div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="page-header">
+  <h3>Edit Lottery #<%= @lottery.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <form action="/update_lottery/<%= @lottery.id %>" method="post">
+      <!-- Hidden input for authenticity token to protect from forgery -->
+      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+      <!-- Label and input for transactions_id -->
+      <div class="form-group">
+        <label for="transactions_id" class="control-label">
+          Transactions
+        </label>
+
+        <input type="text" id="transactions_id" name="transactions_id" placeholder="Transactions" class="form-control" value="<%= @lottery.transactions_id %>">
+      </div>
+
+      <!-- Label and input for user_id -->
+      <div class="form-group">
+        <label for="user_id" class="control-label">
+          User
+        </label>
+
+        <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @lottery.user_id %>">
+      </div>
+
+      <!-- Label and input for amount -->
+      <div class="form-group">
+        <label for="amount" class="control-label">
+          Amount
+        </label>
+
+        <input type="text" id="amount" name="amount" placeholder="Amount" class="form-control" value="<%= @lottery.amount %>">
+      </div>
+
+      <!-- Label and input for raffle_number -->
+      <div class="form-group">
+        <label for="raffle_number" class="control-label">
+          Raffle number
+        </label>
+
+        <input type="text" id="raffle_number" name="raffle_number" placeholder="Raffle number" class="form-control" value="<%= @lottery.raffle_number %>">
+      </div>
+
+      <!-- Label and input for date -->
+      <div class="form-group">
+        <label for="date" class="control-label">
+          Date
+        </label>
+
+        <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @lottery.date %>">
+      </div>
+
+      <button class="btn btn-warning">
+        Update Lottery
+      </button>
+      or
+      <a href="/lotteries/<%= @lottery.id %>">Cancel</a>
+    </form>
+  </div>
+</div>

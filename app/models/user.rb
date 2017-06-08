@@ -5,12 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :transactions, :dependent => :nullify
+
   validates :username, :presence => true
   validates :username, :uniqueness => { :scope => [:ssn] }
   validates :ssn, :presence => true
   validates :ssn, :uniqueness => true
+  validates :ssn, :length => { :minimum => 9, :maximum => 9 }
   validates :last_name, :presence => true
   validates :first_name, :presence => true
-  validates :date_of_birth, :presence => true
-  validates :address, :presence => true
+  # validates :date_of_birth, :presence => true
+  # validates :address, :presence => true
 end
