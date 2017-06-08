@@ -14,6 +14,7 @@ before_action :authenticate_user!
 
   def new
     @transaction = Transaction.new
+    @current_user = current_user
 
     render("transactions/new.html.erb")
   end
