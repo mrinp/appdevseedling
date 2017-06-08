@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-root to: "home#index"
+root to: "users#index"
 
   # Routes for the Lottery resource:
   # CREATE
@@ -39,7 +39,12 @@ root to: "home#index"
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "/users", :controller => "users", :action => "index"
-  get "/users/:username", :controller => "users", :action => "show"
+  # get "/users/:id", :controller => "users", :action => "show"
+  get "/users/sign_up", :controller => "users", :action => "sign_up"
+  # get "/users/sign_in", :controller => "users", :action => "sign_in"
+  get "/users/sign_out", :controller => "users", :action => "sign_up"
+  get "/users/index", :controller => "users", :action => "index"
+  get "/users/show/:id", :controller => "users", :action => "show"
 
 
 

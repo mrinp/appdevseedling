@@ -1,13 +1,18 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    @users = Users.all
+    @this_user = User.find(params[:id])
+
 
     render("users/index.html.erb")
   end
   def show
-    @users = User.find(params[:username])
+    @user = Users.find(params[:id])
 
     render("users/show.html.erb")
   end
 
+  def sign_in
+    render("users/sign_in.html.erb")
+  end
     end
