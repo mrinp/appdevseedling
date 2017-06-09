@@ -6,12 +6,9 @@
 </div>
 
 <% @thismonth = Date.today.strftime("%m") %>
-<% @current_lottery = @lotteries.select { |item| item.id == @thismonth} %>
-<% @monthly_winnings = 0 %>
 
-<% @current_lottery.each do |thing| %>
-  <% @monthly_winnings = @monthly_winnings + thing.amount %>
-  <% end %>
+<% @current_lottery = @lotteries.select { |item| item.id == @thismonth} %>
+
 
 
 <div class="row">
@@ -28,10 +25,18 @@
       <% @lotteries.each do |lottery| %>
       <tr>
         <td><%= lottery.id %></td>
-        <td>
 
+        <td>
         </td>
-      <td><%= lottery.amount %></td>
+
+        <td>
+          <% @monthly_winnings = 0 %>
+          <% @current_lottery.transaction.each do |thing| %>
+          <% @monthly_winnings = @monthly_winnings + thing.amount %>
+          <% end %>
+          <%= @monthly_winnings %>
+        </td>
+
       <td><%= lottery.raffle_number %></td>
       <td><%= lottery.date %></td>
 

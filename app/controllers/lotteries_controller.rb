@@ -2,6 +2,8 @@ class LotteriesController < ApplicationController
   before_action :authenticate_user!
   def index
     @lotteries = Lottery.all
+    @thismonth = Date.today.strftime("%m")
+    
     render("lotteries/index.html.erb")
   end
 
