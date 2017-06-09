@@ -2,15 +2,29 @@
   <h3><%= current_user.first_name %>'s Account Page</h3>
 </div>
 
+<% @thismonth = Date.today.strftime("%m") %>
+<% @current_month = @user.transactions.select{ |item| item.date.strftime("%m") == @thismonth} %>
+
+<% @total_sum = 0 %>
+<% @user.transactions.each do |item| %>
+<% @total_sum = @total_sum + item.amount %>
+<% end %>
+
 <div class="container">
     <div class="row">
         <div class="col-md-offset-1 col-md-5">
           <h3>To Date You have Saved!</h3>
-          <h4>Account Balance:</h4> <%= @account_balance %>
+          $<%= @total_sum %>
         </div>
 
         <div class="col-md-5">
           <h3>Entries in This Month's Raffle</h3>
+          <% @current_sum = 0 %>
+          <% @current_month.each do |item| %>
+          <% @current_sum  = @current_sum  + item.amount  %>
+          <% end %>
+          <% @raffle_tickets = (@current_sum/5) %>
+          <%= @raffle_tickets %> Tickets!
         </div>
     </div>
 </div>

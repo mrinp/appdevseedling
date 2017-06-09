@@ -37,28 +37,25 @@
 
   <div class="col-md-offset-1 col-md-5">
     <h3>To Date You Have Saved:</h3>
-    <% @sum = 0 %>
+    <% @total_sum = 0 %>
     <% @user_info.each do |item| %>
-    <% @sum = @sum + item.amount %>
+    <% @total_sum = @total_sum + item.amount %>
     <% end %>
-    Total: $<%= @sum %>
+    Total: $<%= @total_sum %>
   </div>
 
   <div class="col-md-5">
 
     <% @thismonth = Date.today.strftime("%m") %>
-    <% @sum = 0 %>
-    <% @user_info.each do |item| %>
+    <% @current_sum = 0 %>
 
-    <% if item.date.strftime("%m") == @thismonth %>
-    <% @sum = @sum + item.amount  %>
-    <% else %>
-    <% @sum = @sum + 0 %>
-    <% end %>
+    <% @current_month.each do |item| %>
+    <% @current_sum  = @current_sum  + item.amount  %>
+
     <% end %>
 
     <h3>This Month You Have Saved:</h3>
-    Total: $<%= @sum %>
-  </div>
+      Total: $<%= @current_sum  %>
+    </div>
 
-</div>
+  </div>
