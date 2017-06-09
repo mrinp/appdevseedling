@@ -1,0 +1,61 @@
+<!-- Label and input for user_id -->
+<div class="form-group">
+  <label for="user_id" class="control-label">
+    User
+  </label>
+
+  <input type="text" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= @transaction.user_id %>">
+</div>
+
+<!-- Label and input for lottery_elligible -->
+<div class="checkbox">
+  <label for="lottery_elligible">
+    <input type="checkbox" id="lottery_elligible" name="lottery_elligible" value="1" <%= "checked" if @transaction.lottery_elligible %>>
+    Lottery elligible
+  </label>
+</div>
+
+<!-- Label and input for date -->
+<div class="form-group">
+  <label for="date" class="control-label">
+    Date
+  </label>
+
+  <input type="text" id="date" name="date" placeholder="Date" class="form-control" value="<%= @transaction.date %>">
+</div>
+
+<!-- Label and input for lottery_id -->
+<div class="form-group">
+  <label for="lottery_id" class="control-label">
+    Lottery
+  </label>
+
+  <input type="text" id="lottery_id" name="lottery_id" placeholder="Lottery" class="form-control" value="<%= @transaction.lottery_id %>">
+</div>
+
+
+<div class="col-md-offset-1 col-md-5">
+  <h3>To Date You Have Saved:</h3>
+  <% @sum = 0 %>
+  <% @user_info.each do |item| %>
+  <% @sum = @sum + item.amount %>
+  <% end %>
+  Total: $<%= @sum %>
+</div>
+
+<div class="col-md-5">
+
+  <% @thismonth = Date.today.strftime("%m") %>
+  <% @sum = 0 %>
+  <% @user_info.each do |item| %>
+
+  <% if item.date.strftime("%m") == @thismonth %>
+  <% @sum = @sum + item.amount  %>
+  <% else %>
+  <% @sum = @sum + 0 %>
+  <% end %>
+  <% end %>
+
+  <h3>This Month You Have Saved:</h3>
+  Total: $<%= @sum %>
+</div>

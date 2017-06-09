@@ -5,6 +5,7 @@
 <div class="row">
   <div class="col-md-12 mb-2">
     <dl class="dl-horizontal">
+
       <dt>User</dt>
       <dd><%= @transaction.user_id %></dd>
 
@@ -21,9 +22,9 @@
       <a href="/transactions" class="btn btn-primary">
         Back
       </a>
-      <a href="/transactions/<%= @transaction.id %>/edit" class="btn btn-warning">
+      <!-- <a href="/transactions/<%= @transaction.id %>/edit" class="btn btn-warning">
         Edit
-      </a>
+      </a> -->
       <a href="/delete_transaction/<%= @transaction.id %>" class="btn btn-danger" rel="nofollow">
         Delete
       </a>

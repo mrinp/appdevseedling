@@ -2,6 +2,7 @@ class TransactionsController < ApplicationController
 before_action :authenticate_user!
   def index
     @transactions = Transaction.all
+    
 
     render("transactions/index.html.erb")
   end
@@ -39,6 +40,7 @@ before_action :authenticate_user!
 
   def edit
     @transaction = Transaction.find(params[:id])
+    @transaction.date = params[:created_at]
 
     render("transactions/edit.html.erb")
   end
