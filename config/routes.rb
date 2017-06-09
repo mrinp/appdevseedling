@@ -40,11 +40,11 @@ root to: "users#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get "/users", :controller => "users", :action => "index"
   # get "/users/:id", :controller => "users", :action => "show"
-  get "/users/sign_up", :controller => "users", :action => "sign_up"
+  # get "/users/sign_up", :controller => "users", :action => "sign_up"
   # get "/users/sign_in", :controller => "users", :action => "sign_in"
-  get "/users/sign_out", :controller => "users", :action => "sign_up"
-  get "/users/index", :controller => "users", :action => "index"
-  get "/users/show/:id", :controller => "users", :action => "show"
+  # get "/users/sign_out", :controller => "users", :action => "sign_up"
+  # get "/users/index", :controller => "users", :action => "index"
+  get "/users/:id", :controller => "users", :action => "show"
 
 
 

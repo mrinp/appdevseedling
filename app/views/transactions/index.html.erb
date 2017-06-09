@@ -9,21 +9,18 @@
   <div class="col-md-12">
     <table class="table table-striped table-hover">
       <tr>
-        <th>User</th>
+
         <th>Amount</th>
-        <th>Lottery elligible</th>
         <th>Date</th>
-        <th>Lottery</th>
         <th>Actions</th>
       </tr>
 
       <% @transactions.each do |transaction| %>
       <tr>
-        <td><%= transaction.user_id %></td>
+
         <td><%= transaction.amount %></td>
-        <td><%= transaction.lottery_elligible %></td>
         <td><%= transaction.date %></td>
-        <td><%= transaction.lottery_id %></td>
+
         <td>
           <a href="/transactions/<%= transaction.id %>" class="btn btn-primary">Show</a>
           <a href="/transactions/<%= transaction.id %>/edit" class="btn btn-warning">Edit</a>
@@ -33,4 +30,13 @@
       <% end %>
     </table>
   </div>
+
+  <div class="col-md-offset-1 col-md-5">
+    <h3>To Date You have Saved:</h3>
+    <% @transactions.each do |amount| %>
+    total = <% @transactions.amount %> + <% @transactions.amount %>
+    <% end %>
+    total
+  </div>
+
 </div>

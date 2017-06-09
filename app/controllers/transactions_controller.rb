@@ -25,7 +25,7 @@ before_action :authenticate_user!
     @transaction.user_id = params[:user_id]
     @transaction.amount = params[:amount]
     @transaction.lottery_elligible = params[:lottery_elligible]
-    @transaction.date = params[:date]
+    @transaction.date = DateTime.now
     @transaction.lottery_id = params[:lottery_id]
 
     save_status = @transaction.save
@@ -49,7 +49,7 @@ before_action :authenticate_user!
     @transaction.user_id = params[:user_id]
     @transaction.amount = params[:amount]
     @transaction.lottery_elligible = params[:lottery_elligible]
-    @transaction.date = params[:date]
+    @transaction.date = params[:created_at]
     @transaction.lottery_id = params[:lottery_id]
 
     save_status = @transaction.save
