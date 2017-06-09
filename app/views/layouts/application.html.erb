@@ -40,7 +40,7 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <!-- <li><a href="/lotteries">Lottery</a></li> -->
+          <li><a href="/lotteries">Lottery</a></li>
           <% if current_user != nil %>
           <li><a href="/users/<%=current_user.id%>"> <%=current_user.first_name%>'s Balance</a></li>
           <li><a href="/transactions/"> Transactions</a></li>

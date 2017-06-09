@@ -14,6 +14,9 @@ class LotteriesController < ApplicationController
 
   def new
     @lottery = Lottery.new
+    @thismonth = Date.today.strftime("%m")
+    @lottery.id = @thismonth
+    @current_month = @lottery.transactions.select{ |item| item.date.strftime("%m") == @thismonth}
 
     render("lotteries/new.html.erb")
   end
@@ -21,11 +24,13 @@ class LotteriesController < ApplicationController
   def create
     @lottery = Lottery.new
 
-    @lottery.transactions_id = params[:transactions_id]
-    @lottery.user_id = params[:user_id]
-    @lottery.amount = params[:amount]
-    @lottery.raffle_number = params[:raffle_number]
-    @lottery.date = params[:date]
+    # @lottery.transactions_id = params[:transactions_id]
+    # @lottery.user_id = params[:user_id]
+    # @lottery.amount = params[:amount]
+    # @lottery.raffle_number = params[:raffle_number]
+    # @lottery.date = params[:date]
+    @thismonth = Date.today.strftime("%m")
+    @lottery.id = @thismonth
 
     save_status = @lottery.save
 
@@ -45,11 +50,11 @@ class LotteriesController < ApplicationController
   def update
     @lottery = Lottery.find(params[:id])
 
-    @lottery.transactions_id = params[:transactions_id]
-    @lottery.user_id = params[:user_id]
-    @lottery.amount = params[:amount]
-    @lottery.raffle_number = params[:raffle_number]
-    @lottery.date = params[:date]
+    # @lottery.transactions_id = params[:transactions_id]
+    # @lottery.user_id = params[:user_id]
+    # @lottery.amount = params[:amount]
+    # @lottery.raffle_number = params[:raffle_number]
+    # @lottery.date = params[:date]
 
     save_status = @lottery.save
 
