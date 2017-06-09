@@ -5,6 +5,36 @@
   </h1>
 </div>
 
+<% @thismonth = Date.today.strftime("%m") %>
+<% @user_info = @transactions.select{ |item| item.user_id == current_user.id} %>
+<% @current_month = @user_info.select{ |item| item.date.strftime("%m") == @thismonth} %>
+
+<div class="row">
+<div class="col-md-offset-1 col-md-5">
+  <h3>To Date You Have Saved:</h3>
+  <% @total_sum = 0 %>
+  <% @user_info.each do |item| %>
+  <% @total_sum = @total_sum + item.amount %>
+  <% end %>
+  Total: $<%= @total_sum %>
+</div>
+
+<div class="col-md-5">
+
+  <% @thismonth = Date.today.strftime("%m") %>
+  <% @current_sum = 0 %>
+
+  <% @current_month.each do |item| %>
+  <% @current_sum  = @current_sum  + item.amount  %>
+
+  <% end %>
+
+  <h3>This Month You Have Saved:</h3>
+    Total: $<%= @current_sum  %>
+  </div>
+
+</div>
+
 <div class="row">
   <div class="col-md-12">
     <table class="table table-striped table-hover">
@@ -15,9 +45,6 @@
         <th>Actions</th>
       </tr>
 
-      <% @thismonth = Date.today.strftime("%m") %>
-      <% @user_info = @transactions.select{ |item| item.user_id == current_user.id} %>
-      <% @current_month = @user_info.select{ |item| item.date.strftime("%m") == @thismonth} %>
 
       <tr>
 
@@ -35,27 +62,5 @@
     </table>
   </div>
 
-  <div class="col-md-offset-1 col-md-5">
-    <h3>To Date You Have Saved:</h3>
-    <% @total_sum = 0 %>
-    <% @user_info.each do |item| %>
-    <% @total_sum = @total_sum + item.amount %>
-    <% end %>
-    Total: $<%= @total_sum %>
-  </div>
-
-  <div class="col-md-5">
-
-    <% @thismonth = Date.today.strftime("%m") %>
-    <% @current_sum = 0 %>
-
-    <% @current_month.each do |item| %>
-    <% @current_sum  = @current_sum  + item.amount  %>
-
-    <% end %>
-
-    <h3>This Month You Have Saved:</h3>
-      Total: $<%= @current_sum  %>
-    </div>
 
   </div>

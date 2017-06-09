@@ -2,13 +2,11 @@ class LotteriesController < ApplicationController
   before_action :authenticate_user!
   def index
     @lotteries = Lottery.all
-
     render("lotteries/index.html.erb")
   end
 
   def show
     @lottery = Lottery.find(params[:id])
-
     render("lotteries/show.html.erb")
   end
 
@@ -16,7 +14,7 @@ class LotteriesController < ApplicationController
     @lottery = Lottery.new
     @thismonth = Date.today.strftime("%m")
     @lottery.id = @thismonth
-    @current_month = @lottery.transactions.select{ |item| item.date.strftime("%m") == @thismonth}
+    @lottery.transactions.select{ |item| item.date.strftime("%m") == @thismonth}
 
     render("lotteries/new.html.erb")
   end

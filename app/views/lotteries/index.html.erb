@@ -1,10 +1,17 @@
 <div class="page-header">
   <h1>
     All Lotteries
-    <a href="/lotteries/new" class="btn btn-lg btn-success">New Lottery</a>
+    <!-- <a href="/lotteries/new" class="btn btn-lg btn-success">New Lottery</a> -->
   </h1>
 </div>
 
+<% @thismonth = Date.today.strftime("%m") %>
+<% @current_lottery = @lotteries.select { |item| item.id == @thismonth} %>
+<% @monthly_winnings = 0 %>
+
+<% @current_lottery.each do |thing| %>
+  <% @monthly_winnings = @monthly_winnings + thing.amount %>
+  <% end %>
 
 
 <div class="row">
