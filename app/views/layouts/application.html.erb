@@ -34,7 +34,11 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="/seedling.html.erb" class="navbar-brand">Seedling</a>
+        <% if current_user != nil %>
+        <a href="/users" class="navbar-brand">Seedling</a>
+        <% else %>
+        <a href="/" class="navbar-brand">Seedling</a>
+        <% end %>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -45,7 +49,7 @@
           <li><a href="/users/<%=current_user.id%>"> <%=current_user.first_name%>'s Balance</a></li>
           <li><a href="/transactions/"> Transactions</a></li>
           <% else %>
-          <li><a href="/users/index"> Index</a></li>
+          <li><a href="/"> Index</a></li>
           <% end %>
 
           <!-- <li><a href="/rails/info">Sitemap</a></li> -->
