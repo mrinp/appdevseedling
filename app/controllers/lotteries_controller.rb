@@ -3,7 +3,8 @@ class LotteriesController < ApplicationController
   def index
     @lotteries = Lottery.all
     @thismonth = Date.today.strftime("%m")
-    
+    @current_lottery = (lottery.id == @thismonth)
+
     render("lotteries/index.html.erb")
   end
 
