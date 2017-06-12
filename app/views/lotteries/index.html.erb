@@ -7,9 +7,21 @@
 
 <% @thismonth = Date.today.strftime("%m") %>
 
-<% @current_lottery = (@lotteries.id == @thismonth) %>
-<%= @current_lottery %>
+<% @total_sum = 0 %>
 
+<% lot = @lotteries.first %>
+
+<% lot.transactions.each do |item| %>
+<% @total_sum = @total_sum + item.amount %>
+<% end %>
+
+<% @total_entries = @total_sum/5 %>
+
+
+<% @your_deposit = 0  %>
+<% current_user.transactions.each do |item| %>
+<% @your_deposit = @your_deposit + item.amount %>
+<% end %>
 
 <div class="row">
   <div class="col-md-12">
@@ -18,8 +30,12 @@
 
         <th>Lottery #</th>
         <th>Total # of Entries</th>
-        <th>Current Winning Pool</th>
+        <th>Current Pool</th>
+        <% if @your_deposit%5 == 0 %>
+        <th>Your Chance</th>
+        <% else %>
         <th>Your Chances</th>
+        <% end %>
       </tr>
 
       <% @lotteries.each do |lottery| %>
@@ -27,12 +43,14 @@
         <td><%= lottery.id %></td>
 
         <td>
+          <%= @total_entries %>
         </td>
 
+      <td>
+        $<%= @total_sum %>
+      </td>
 
-
-      <td><%= lottery.raffle_number %></td>
-      <td><%= lottery.date %></td>
+      <td><%= @your_deposit/5 %> in <%= @total_entries %></td>
 
         <!-- <a href="/lotteries/<%= lottery.id %>" class="btn btn-primary">Show</a>
         <a href="/lotteries/<%= lottery.id %>/edit" class="btn btn-warning">Edit</a>
@@ -43,3 +61,6 @@
   </table>
 </div>
 </div>
+
+
+<h4> <a href="/transactions">Want to increase your chances? Deposit now!</a></h4>
