@@ -2,7 +2,7 @@ class TransactionsController < ApplicationController
 before_action :authenticate_user!
   def index
     @transactions = Transaction.all
-    
+
 
     render("transactions/index.html.erb")
   end
@@ -18,6 +18,7 @@ before_action :authenticate_user!
     @current_user = current_user
 
     render("transactions/new.html.erb")
+
   end
 
   def create
@@ -32,7 +33,7 @@ before_action :authenticate_user!
     save_status = @transaction.save
 
     if save_status == true
-      redirect_to("/transactions/#{@transaction.id}", :notice => "Transaction created successfully.")
+      redirect_to("/transactions", :notice => "Transaction created successfully.")
     else
       render("transactions/new.html.erb")
     end
@@ -69,7 +70,7 @@ before_action :authenticate_user!
     @transaction.destroy
 
     if URI(request.referer).path == "/transactions/#{@transaction.id}"
-      redirect_to("/", :notice => "Transaction deleted.")
+      redirect_to("/transactions", :notice => "Transaction deleted.")
     else
       redirect_to(:back, :notice => "Transaction deleted.")
     end

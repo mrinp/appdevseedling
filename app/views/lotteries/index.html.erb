@@ -31,11 +31,7 @@
         <th>Lottery #</th>
         <th>Total # of Entries</th>
         <th>Current Pool</th>
-        <% if @your_deposit%5 == 0 %>
         <th>Your Chance</th>
-        <% else %>
-        <th>Your Chances</th>
-        <% end %>
       </tr>
 
       <% @lotteries.each do |lottery| %>
@@ -51,6 +47,7 @@
       </td>
 
       <td><%= @your_deposit/5 %> in <%= @total_entries %></td>
+
 
         <!-- <a href="/lotteries/<%= lottery.id %>" class="btn btn-primary">Show</a>
         <a href="/lotteries/<%= lottery.id %>/edit" class="btn btn-warning">Edit</a>
